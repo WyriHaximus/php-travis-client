@@ -23,7 +23,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->tmpDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR . uniqid('wyrihaximus-php-travis-client-tests-') . DIRECTORY_SEPARATOR;
+        $this->tmpDir = 'C:\\tmp\\'/*sys_get_temp_dir()*/ . DIRECTORY_SEPARATOR . uniqid('wyrihaximus-php-travis-client-tests-') . DIRECTORY_SEPARATOR;
         mkdir($this->tmpDir, 0777, true);
         $this->tmpNamespace = Configuration::DEFAULT_GENERATED_CLASS_NAMESPACE . uniqid('WyriHaimusPHPTravisClientTestNamespace');
     }
