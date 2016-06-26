@@ -22,3 +22,10 @@ filters:
     when:
       - action = "reopened"
       - filter(issue.labels, "name") has "invalid"
+      
+  auto_merge:
+    name: "Automatically merge certain pull requests"
+    events: [ pull_request ]
+    merge: true
+    when:
+      - filter(issue.labels, "name") has "auto_merge"
