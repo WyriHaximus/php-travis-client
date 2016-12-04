@@ -1,3 +1,5 @@
+# Moved to https://github.com/php-api-clients/travis
+
 # TravisCI API Client for PHP 7
 
 [![Build Status](https://travis-ci.org/WyriHaximus/php-travis-client.svg?branch=master)](https://travis-ci.org/WyriHaximus/php-travis-client)
