@@ -1,0 +1,31 @@
+vars:
+  guardians:
+    - WyriHaximus
+  exclude_guardians: not (issue.user.login in vars.guardians)
+  contrib_link: >
+    [contribution guidelines](//github.com/WyriHaximus/php-travis-client/blob/master/CONTRIBUTING.md)
+
+filters:
+  short_description:
+    name: "Close issues with short descriptions"
+    events:
+      - GitHub.IssuesEvent
+      - GitHub.PullRequest
+    close: true
+    label: invalid
+    when: length(issue.body) < 50
+
+  remove_invalid:
+    name: "Remove invalid tag when issue re-opened"
+    events: [GitHub.IssuesEvent, GitHub.PullRequest]
+    label: -invalid
+    when:
+      - action = "reopened"
+      - filter(issue.labels, "name") has "invalid"
+      
+  auto_merge:
+    name: "Automatically merge certain pull requests"
+    events: [ pull_request ]
+    merge: true
+    when:
+      - filter(issue.labels, "name") has "auto_merge"
